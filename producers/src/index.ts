@@ -13,6 +13,3 @@ app.use(router)
 app.listen(port, () => {
   console.log(`Kafka Producer listening on port ${port}`)
 })
-
-receiveMessage(1, 'g1');
-receiveMessage(2, 'g1');
