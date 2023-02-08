@@ -1,7 +1,6 @@
 import express from 'express';
 import { router } from './send-message'
 import bodyParser from 'body-parser'
-import { receiveMessage } from './receive-message';
 
 const app = express()
 const port = 3000
