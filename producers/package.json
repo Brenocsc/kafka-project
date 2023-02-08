@@ -1,5 +1,5 @@
 {
-  "name": "kafka-producer",
+  "name": "kafka-producers",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
