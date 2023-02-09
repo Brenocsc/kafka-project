@@ -23,6 +23,9 @@ $ curl --location --request POST 'http://localhost:3000/' \
 }'
 ```
 
+#### Postman collection
+Have a postman collection at the root of the project `Kafka-Project.postman_collection.json`.
+
 ## Consumers
 
 The consumers is like a listeners, who will receive messages from a Kafka topic.
@@ -37,4 +40,5 @@ $ npm run start
 ### Setup consumers
 
 On `src/index.ts` file, can configure the consumers, editing their Id's and groupId's for each one.
+
 
