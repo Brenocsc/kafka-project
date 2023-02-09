@@ -23,7 +23,8 @@ $ curl --location --request POST 'http://localhost:3000/' \
 }'
 ```
 
-#### Postman collection
+### Postman collection
+
 Have a postman collection at the root of the project `Kafka-Project.postman_collection.json`.
 
 ## Consumers
@@ -41,4 +42,12 @@ $ npm run start
 
 On `src/index.ts` file, can configure the consumers, editing their Id's and groupId's for each one.
 
+## KsqlDB CLI
 
+the KsqlDB CLI container will provider a command line to manage KsqlDB server.
+
+### Access the CLI
+
+```bash
+$ docker-compose exec ksqldb-cli  ksql http://ksqldb-server:8088
+```
