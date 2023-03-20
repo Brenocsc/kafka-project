@@ -3,6 +3,7 @@ version: "2"
 services:
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
+    platform: linux/amd64
     ports:
       - "2181:2181"
     volumes:
@@ -12,6 +13,7 @@ services:
 
   kafka:
     image: docker.io/bitnami/kafka:3.3
+    platform: linux/amd64
     ports:
       - "9092:9092"
       - '9093:9093'
@@ -38,6 +40,7 @@ services:
 
   ksqldb-server:
     image: confluentinc/ksqldb-server:latest
+    platform: linux/amd64
     hostname: ksqldb-server
     depends_on:
       - kafka
@@ -55,6 +58,7 @@ services:
   # > docker-compose exec ksqldb-cli  ksql http://ksqldb-server:8088
   ksqldb-cli:
     image: confluentinc/ksqldb-cli:latest
+    platform: linux/amd64
     container_name: ksqldb-cli
     depends_on:
       - ksqldb-server
