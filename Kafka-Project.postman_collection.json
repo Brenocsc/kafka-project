@@ -2,17 +2,18 @@
 	"info": {
 		"_postman_id": "44a308e4-8681-4a39-8e02-80158e88f6f2",
 		"name": "Kafka-Project",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16179858"
 	},
 	"item": [
 		{
-			"name": "Send message Kafka",
+			"name": "Send message KafkaJS",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"message\": \"b1\"\n}",
+					"raw": "{\n    \"message\": \"c3\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -28,6 +29,34 @@
 					"port": "3000",
 					"path": [
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send message RDKafka",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"c3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rdkafka",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rdkafka"
 					]
 				}
 			},
