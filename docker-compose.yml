@@ -2,8 +2,7 @@ version: "2"
 
 services:
   zookeeper:
-    image: docker.io/bitnami/zookeeper:3.8
-    platform: linux/amd64
+    image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
     volumes:
@@ -12,20 +11,19 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
   kafka:
-    image: docker.io/bitnami/kafka:3.3
-    platform: linux/amd64
+    image: wurstmeister/kafka
     ports:
       - "9092:9092"
-      - '9093:9093'
+      - "9093:9093"
     volumes:
       - "kafka_data:/bitnami"
     environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
-      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_ADVERTISED_LISTENERS=CLIENT://localhost:9092,EXTERNAL://localhost:9093
+      - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
     depends_on:
       - zookeeper
 
@@ -40,7 +38,6 @@ services:
 
   ksqldb-server:
     image: confluentinc/ksqldb-server:latest
-    platform: linux/amd64
     hostname: ksqldb-server
     depends_on:
       - kafka
@@ -58,7 +55,6 @@ services:
   # > docker-compose exec ksqldb-cli  ksql http://ksqldb-server:8088
   ksqldb-cli:
     image: confluentinc/ksqldb-cli:latest
-    platform: linux/amd64
     container_name: ksqldb-cli
     depends_on:
       - ksqldb-server
